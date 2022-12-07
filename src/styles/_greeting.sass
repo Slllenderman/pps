@@ -1,0 +1,79 @@
+@import vars 
+
+@mixin greeting($verticalsize, $gridsize)
+    width: 100%
+    height: $verticalsize
+    background-image: radial-gradient(#D9D9D900, #C6470040), url("../imgs/greetingbg.jpg")
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center
+    display: flex
+    align-items: center
+    justify-content: center
+    &::before
+        width: 100%
+        height: $verticalsize
+        z-index: 0
+        position: absolute
+        content: " "
+        background-color: rgba(0, 13, 33, 0.63)
+
+    .header-greeting-container
+        display: grid
+        grid-template-columns: $gridsize * 1.5 ($gridsize * 14/20)
+        grid-template-rows: $gridsize * 4/20  $gridsize * 4/20
+        row-gap: $gridsize * 1.3/20
+        column-gap: $gridsize * 0.5
+        opacity: 0%
+        animation-name: appearance 
+        animation-duration: 2.5s 
+        animation-fill-mode: forwards 
+        animation-delay: 0.3s
+        
+    @keyframes appearance
+        0%
+            opacity: 0%
+            transform: translateY(-3vw)
+        75%
+            transform: translateY(0)
+        100%
+            opacity: 100%
+
+
+    .header-greeting-title
+        color: $pallete-maintext
+        z-index: 1
+        grid-row-start: 1
+        grid-row-end: 3
+        font-weight: 800
+        font-size: $gridsize * 2.2 / 20
+        >p
+            margin: 0 0 0 0
+
+    .header-greeting-button
+        color: $pallete-maintext
+        z-index: 1
+        font-size: $gridsize * 1.6/20
+        font-weight: 600
+        text-decoration: none
+        background-color: transparent
+        transition: background-color 0.3s ease 0s
+        transition: color 0.3s ease 0s
+        transition: font-size 0.3s ease 0s
+
+        border-style: solid
+        border-color: $pallete-maintext
+        border-width: 0.18vw
+        border-radius: 0.7vw
+
+        display: flex
+        align-items: center
+        justify-content: center
+        &:hover
+            color: black
+            font-size: $gridsize * 1.7 / 20
+            background-color: $pallete-maintext
+
+
+        
+    

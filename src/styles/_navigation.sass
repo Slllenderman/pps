@@ -1,0 +1,67 @@
+@import vars
+    
+@mixin navigation($verticalsize, $margin, $fontsize)
+    height: $verticalsize
+    background-color: $pallete-navigation-background
+    width: 100%
+    display: flex
+    align-items: center
+
+    .header-navigation-logo
+        width: $verticalsize * (10 / 13)
+        height: $verticalsize * (10 / 13)
+        margin-left: $margin
+
+    .header-navigation
+        font-size: $fontsize
+        font-weight: 800
+        display: flex
+        flex-grow: 1
+        align-items: baseline
+
+    .header-navigation-title
+        color: $pallete-navigation-red
+        margin-right: $margin
+        text-decoration: none
+
+    .header-navigation-leftpart-link
+        color: $pallete-maintext
+        text-decoration: none
+        font-size: $fontsize * (3.2 / 5.4)
+        font-weight: 500
+        margin-left: $margin * (2 / 3)
+        transition: color 0.25s ease 0s    
+        &:hover
+            color: $pallete-navigation-red
+
+    .header-navigation-rightpart
+        flex-grow: 1
+        display: flex
+        justify-content: end
+        .header-navigation-rightpart-link
+            display: flex
+            align-items: baseline 
+            color: $pallete-navigation-greytext
+            text-decoration: none
+            font-size: $fontsize * (2.4/ 5.4)
+            font-weight: 400
+            margin-right: $margin * 0.5
+            transition: color 0.2s ease 0s
+
+            .header-navigation-rightpart-image
+                width: $verticalsize * (3 / 13)
+                height: $verticalsize * (3 / 13)
+                position: relative
+                top: $verticalsize * (0.4 / 8)
+                fill: $pallete-navigation-green
+                transition: fill 0.2s ease 0s
+                margin-right: 2px
+
+            &:hover .header-navigation-rightpart-image
+                fill: $pallete-navigation-red
+
+            &:hover
+                color: $pallete-navigation-red
+
+
+

@@ -1,0 +1,47 @@
+@import vars
+
+.list
+    margin-left: 5vw
+    margin-top: 3vw
+    .list-title
+        font-size: 2vw
+        font-weight: 600
+    .list-filter
+        display: grid
+        grid-template-columns: 2fr 1fr
+        grid-column-gap: 1vw
+        align-items: end
+        margin-top: 1vw
+        padding: 1vw
+        background-color: $pallete-cards-grey
+        border-radius: 1vw 
+        width: 47vw
+    .list-filter-title
+        font-size: 1.5vw
+        font-weight: 600
+    .list-filter-textblock-find
+        border-radius: 0.3vw
+        border-color: #000
+        border-width: 1px
+        width: 30vw
+        height: 1.5vw
+        font-size: 1.3vw
+        transition: border-width 0.3s ease 0s
+        &:hover
+            border-width: 2px
+    .list-filter-textblock-price
+        border-radius: 0.3vw
+        border-color: #000
+        border-width: 1px
+        width: 5vw
+        height: 1vw
+        transition: border-width 0.3s ease 0s
+        &:hover
+            border-width: 2px
+    
+    .list-filter-price
+        margin-top: 0.2vw
+
+    .list-filter-price-title
+        margin-right: 0.3vw
+        font-size: 1.2vw

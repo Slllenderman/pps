@@ -1,0 +1,113 @@
+@import vars
+
+.card-userlink
+    text-decoration: none
+    &:hover
+        >div 
+            background-color: $pallete-cards-hovergrey
+
+.card-container
+    width: 45vw
+    height: 15vw  
+    margin-top: 2vw  
+    background-color: $pallete-cards-grey
+    border-radius: 0.5vw
+    padding: 1vw 2vw
+
+    display: inline-grid
+    grid-template-columns: 12vw auto
+    grid-column-gap: 3vw
+    justify-content: start
+    align-content: center
+    align-items: start
+    justify-items: start
+
+    text-decoration: none
+    word-wrap: break-word
+    word-break: break-all
+    transition: background-color 0.3s ease 0s
+    >img
+        width: 13vw
+        height: auto
+        border-radius: 0.5vw
+
+    .card-company
+        display: flex
+        text-decoration: none
+        align-items: center
+        justify-content: start
+        font-size: 1.8vw
+        font-weight: 400
+        transition: color 0.3s ease 0s
+        &:hover
+            color: $pallete-navigation-red
+        >img
+            width: 3vw
+            height: 3vw
+            border-radius: 0.5vw
+        
+
+    .card-content-container
+        display: flex
+        flex-flow: column
+        justify-content: start
+        align-content: start
+
+    .card-title
+        font-size: 2.6vw
+        font-weight: 550
+        color: $pallete-card-title
+        transition: color 0.3s ease 0s
+    
+    .card-location
+        margin-top: 0.1vw
+        margin-bottom: 1vw
+        font-size: 1.5vw
+        font-weight: 400
+        color: $pallete-cards-greytext
+        transition: color 0.3s ease 0s
+
+    .card-description
+        font-size: 2vw
+        font-weight: 400
+
+    .user:hover
+        background-color: $pallete-cards-hovergrey
+        .card-location
+            color: $pallete-cards-hovergreytext
+        .card-title
+            color: $pallete-card-hovertitle
+
+    .card-countProd
+        margin-top: 2vw
+        display: flex
+        justify-content: start
+        align-items: center
+        flex-flow: row
+        .card-countButton
+            display: flex
+            justify-content: center
+            align-items: center
+            border: 0
+            background: transparent
+            width: 4vw
+            height: 4vw
+            >svg
+                width: 4vw
+                height: 4vw
+                transition: fill 0.3s ease 0s
+            &:hover
+                >svg
+                    fill: $pallete-navigation-red
+            &:active
+                >svg
+                    transition: fill 0.1s ease 0s
+                    fill: #670101
+
+        .card-count
+            font-size: 2.5vw
+            margin-left: 0.7vw
+            margin-right: 0.7vw
+        
+        
+

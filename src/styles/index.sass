@@ -1,0 +1,24 @@
+@import navigation
+@import greeting
+@import simplesteps
+@import categories
+@import cards
+@import lists
+@import registration
+body
+    margin: 0 auto
+    font-family: 'Inter', sans-serif
+
+.header-navigation-container
+    @include navigation(6vw, 3vw, 2.6vw) 
+
+.header-greeting
+    @include greeting(30vw, 22vw)
+    
+.bottom-rect
+    background-color: $pallete-navigation-background
+    height: 7vw
+    width: 100%
+    
+
+    

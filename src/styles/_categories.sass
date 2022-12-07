@@ -1,0 +1,54 @@
+@import vars
+    
+.categories-startView
+    width: 70%
+    margin: 0 auto
+    padding-top: 3vw
+    padding-bottom: 6vw
+
+.categories-selectView
+    width: 90%
+    margin: 1.5vw 5vw 5vw 5vw
+
+.categories-container
+    display: grid
+    align-content: center
+    justify-content: center
+    align-items: center
+    justify-items: start
+    grid-template-columns: 1fr 1fr
+    grid-column-gap: 4vw
+    grid-row-gap: 1vw
+    grid-template-rows: 1.6fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+
+.categories-title
+    font-size: 2.8vw
+    font-weight: 800
+    align-self: start
+    grid-column-start: 1
+    grid-column-end: 3
+
+.categories-item
+    display: flex
+    align-items: center
+    >svg
+        width: 3vw
+        height: 3vw
+        fill: #000
+        transition: fill 0.3s ease 0s
+
+    .categories-link
+        font-size: 1.8vw
+        margin: 0 1vw
+        text-decoration: none
+        color: $pallete-links
+        font-weight: 500
+        transition: color 0.3s ease 0s
+        transition: font-size 0.3s ease 0s
+
+    &:hover
+        .categories-link
+            color: $pallete-navigation-red
+            font-size: 1.9vw
+        >svg         
+            fill: $pallete-navigation-red

@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+import { CustomersCategories, ProvidersCategories, ProductsCategories } from './components/categories'
+import  { ProductsList, ProvidersList } from './components/List'
+import { Authorization, Registration } from './components/auth'
+import StartView from './components/startView'
+import Navigation from './components/navigation'
+
+function App(){
+    return(
+    <BrowserRouter basename='/'>
+        <Navigation />
+        <Routes>
+            <Route path='/' element={ <StartView/> }/>
+            <Route path='/providers/categories' element={ <ProvidersCategories/> } />
+            <Route path='/customers/categories' element={ <CustomersCategories/> }/>
+            <Route path='/products/categories' element={ <ProductsCategories/> }/>
+            <Route path='/products' element={ <ProductsList/> }/>
+            <Route path='/providers' element={ <ProvidersList/> }/>
+            <Route path='/authorization' element={ <Authorization/> }/>
+            <Route path='/registration' element={ <Registration/> }/>
+        </Routes>
+    </BrowserRouter>
+)}
+
+export default App
