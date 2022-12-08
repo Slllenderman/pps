@@ -64,6 +64,7 @@ export function ProductsList(){
                         <input type="text" className="list-filter-textblock-price"/>
                     </div>
                 </div>
+                <button className="list-filter-search">Поиск</button>
             </div>
             <ProductsCardsList />
         </div>
@@ -86,6 +87,7 @@ export function ProvidersList(){
                         <input type="text" className="list-filter-textblock-price"/>
                     </div>
                 </div>
+                <button className="list-filter-search">Поиск</button>
             </div>
             <UsersCardsList />
         </div>

@@ -146,6 +146,8 @@
   .card-container .card-description {
     font-size: 2vw;
     font-weight: 400; }
+    .card-container .card-description > p {
+      margin: 0; }
   .card-container .user:hover {
     background-color: #b9b9b9; }
     .card-container .user:hover .card-location {
@@ -188,7 +190,7 @@
     font-weight: 600; }
   .list .list-filter {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     grid-column-gap: 1vw;
     align-items: end;
     margin-top: 1vw;
@@ -218,14 +220,45 @@
     transition: border-width 0.3s ease 0s; }
     .list .list-filter-textblock-price:hover {
       border-width: 2px; }
+  .list .list-filter-search {
+    justify-self: flex-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3vw;
+    border-width: 1px;
+    width: 5vw;
+    height: 2vw;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease 0s;
+    font-weight: 500;
+    font-size: 1vw; }
+    .list .list-filter-search:hover {
+      background-color: #dbdbdb; }
+    .list .list-filter-search:active {
+      transition: background-color 0.1s ease 0s;
+      background-color: #bcbcbc; }
   .list .list-filter-price {
     margin-top: 0.2vw; }
   .list .list-filter-price-title {
     margin-right: 0.3vw;
     font-size: 1.2vw; }
 
+.registration-back-container {
+  width: 100%;
+  height: 35vw;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.registration-back {
+  padding: 2vw 1vw;
+  width: 25vw;
+  height: 20vw;
+  background-color: #1F2B3C;
+  border-radius: 0.5vw; }
+
 .registration-container {
-  margin-top: 10vw;
   display: grid;
   grid-template-columns: 20vw;
   grid-template-rows: 1.4fr 1fr 1fr 1fr 1fr;
@@ -233,46 +266,145 @@
   justify-content: center;
   align-items: flex-start;
   justify-items: start; }
-  .registration-container .registration-title {
-    justify-self: center;
-    font-size: 2vw;
-    font-weight: 500; }
-  .registration-container .registration-label {
-    align-self: flex-end;
-    font-size: 1.5vw;
-    font-weight: 400;
-    margin-top: 0.8vw; }
-  .registration-container .registration-textBlock {
-    justify-self: stretch;
+
+.registration-provider-container {
+  margin: 2vw 3vw;
+  width: 30vw;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-items: start;
+  justify-content: flex-start; }
+  .registration-provider-container .registration-title {
+    margin-bottom: 0.5vw;
+    color: #fff;
+    font-size: 2.3vw;
+    font-weight: 600; }
+  .registration-provider-container .registration-label {
     align-self: flex-start;
-    height: 1.7vw;
-    font-size: 1.5vw;
-    border-radius: 0.3vw;
-    border-color: #000;
-    border-width: 1px;
-    transition: border-width 0.3s ease 0s; }
-    .registration-container .registration-textBlock:hover {
-      border-width: 2px; }
-  .registration-container .registration-confirm {
-    align-self: flex-end;
-    justify-self: center;
-    margin-top: 1vw;
-    border-radius: 0.5vw;
-    border-width: 1px;
-    font-size: 1.3vw;
-    width: 10vw;
+    margin-top: 2vw; }
+  .registration-provider-container .registration-confirm {
+    align-self: flex-start; }
+
+.registration-logo-add {
+  margin-bottom: 2vw; }
+
+.registration-provider-description {
+  width: 35vw;
+  padding: 0.5vw 0.5vw 10vw;
+  overflow-wrap: break-word;
+  align-self: flex-start;
+  font-size: 1.5vw;
+  border-radius: 0.3vw;
+  border-color: #000;
+  border-width: 1px;
+  transition: border-width 0.3s ease 0s; }
+  .registration-provider-description:hover {
+    border-width: 2px; }
+
+.registration-title {
+  justify-self: center;
+  font-size: 2vw;
+  font-weight: 500;
+  color: #fff; }
+
+.registration-label {
+  align-self: flex-end;
+  font-size: 1.5vw;
+  font-weight: 400;
+  margin-top: 0.8vw;
+  color: #fff; }
+
+.registration-textBlock {
+  justify-self: stretch;
+  align-self: flex-start;
+  height: 1.7vw;
+  font-size: 1.5vw;
+  border-radius: 0.3vw;
+  border-color: #fff;
+  border-width: 1px;
+  transition: border-width 0.3s ease 0s; }
+  .registration-textBlock:hover {
+    border-color: #DE0000;
+    border-width: 3px; }
+
+.registration-confirm {
+  align-self: flex-end;
+  justify-self: center;
+  margin-top: 1vw;
+  border-radius: 0.5vw;
+  border-width: 1px;
+  font-size: 1.3vw;
+  width: 10vw;
+  height: 3vw;
+  transition: background-color 0.5s ease 0s; }
+  .registration-confirm:hover {
+    background-color: #b2b2b2; }
+  .registration-confirm:active {
+    transition: background-color 0.1s ease 0s;
+    background-color: #696969; }
+
+.registration-err {
+  font-size: 1vw;
+  align-self: flex-start;
+  justify-self: center;
+  color: #DE0000; }
+
+.shCart-container {
+  margin: 2vw 3vw;
+  display: flex;
+  flex-flow: column; }
+
+.shCart-title {
+  margin-bottom: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 2.5vw;
+  font-weight: 600; }
+  .shCart-title > svg {
+    width: 3vw;
     height: 3vw;
-    transition: background-color 0.5s ease 0s; }
-    .registration-container .registration-confirm:hover {
-      background-color: #dbdbdb; }
-    .registration-container .registration-confirm:active {
-      transition: background-color 0.1s ease 0s;
-      background-color: #bcbcbc; }
-  .registration-container .registration-err {
-    font-size: 1vw;
-    align-self: flex-start;
-    justify-self: center;
-    color: #DE0000; }
+    margin-right: 0.4vw; }
+
+.shCart-label {
+  font-size: 1.4vw; }
+
+.shCart-textBlock {
+  margin-bottom: 1vw;
+  height: 1.5vw;
+  font-size: 1.4vw;
+  width: 30vw; }
+
+.shCart-grid {
+  display: flex;
+  justify-items: flex-start;
+  align-items: baseline;
+  width: 49vw; }
+
+.shCart-confirm {
+  margin-left: 11vw;
+  font-size: 1vw;
+  width: 7vw;
+  height: 2vw; }
+
+.profile-container {
+  margin-left: 5vw;
+  margin-top: 3vw;
+  display: flex;
+  flex-flow: column;
+  width: 49vw; }
+
+.profile-title {
+  font-size: 2vw;
+  font-weight: 600;
+  margin-bottom: 2vw; }
+
+.profile-providerBt {
+  height: 4vw;
+  width: 15vw;
+  font-weight: 600;
+  font-size: 1vw; }
 
 body {
   margin: 0 auto;

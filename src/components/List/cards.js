@@ -1,9 +1,10 @@
 import mocklogo from '../../imgs/logo.jpg'
+import shCartImg from '../../imgs/shCart.svg'
 import { Link } from 'react-router-dom'
 
 export function UserCard(props){
     return(
-        <Link to="/concreateuser" className="card-userlink">
+        <Link to="/provider" className="card-userlink">
             <div className='card-container'>
                 <img src={mocklogo}/>
                 <div className="card-content-container">
@@ -38,4 +39,21 @@ export function ProductCard(props){
                 </div>
             </div>
         </div>
+)}
+
+export function ShCartCard(props){
+    return(
+        <Link to="/shoppingCart" className="card-userlink">
+            <div className='card-container'>
+                <img src={shCartImg}/>
+                <div className="card-content-container">
+                    <div className="card-title">{"Корзина #" + props.id}</div>
+                    <div className="card-location">{`Общая сумма ${props.sum} р`}</div>
+                    <div className="card-description">
+                        <p>{`Локация: ${props.location};`}</p>
+                        <p>{`Дата: ${props.date}`}</p>
+                    </div>
+                </div>
+            </div>
+        </Link>
 )}
