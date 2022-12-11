@@ -1,5 +1,8 @@
 @import vars
 
+.card-provider
+    margin-left: 5vw
+
 .card-userlink
     text-decoration: none
     &:hover
@@ -28,7 +31,7 @@
     transition: background-color 0.3s ease 0s
     >img
         width: 13vw
-        height: auto
+        height: 13vw
         border-radius: 0.5vw
 
     .card-company
@@ -45,6 +48,7 @@
             width: 3vw
             height: 3vw
             border-radius: 0.5vw
+            margin-right: 0.5vw
         
 
     .card-content-container
@@ -67,6 +71,22 @@
         color: $pallete-cards-greytext
         transition: color 0.3s ease 0s
 
+    .card-processing
+        margin-top: 0.1vw
+        margin-bottom: 1vw
+        font-size: 1.5vw
+        font-weight: 400
+        color: $pallete-cards-orange
+        transition: color 0.3s ease 0s
+
+    .card-confirmed
+        margin-top: 0.1vw
+        margin-bottom: 1vw
+        font-size: 1.5vw
+        font-weight: 400
+        color: $pallete-navigation-green
+        transition: color 0.3s ease 0s
+
     .card-description
         font-size: 2vw
         font-weight: 400
@@ -80,36 +100,63 @@
         .card-title
             color: $pallete-card-hovertitle
 
-    .card-countProd
-        margin-top: 2vw
+.card-countProd
+    margin-top: 2vw
+    display: flex
+    justify-content: start
+    align-items: center
+    flex-flow: row
+    width: 49vw
+    .card-countButton
         display: flex
-        justify-content: start
+        justify-content: center
         align-items: center
-        flex-flow: row
-        .card-countButton
-            display: flex
-            justify-content: center
-            align-items: center
-            border: 0
-            background: transparent
-            width: 4vw
-            height: 4vw
-            >svg
-                width: 4vw
-                height: 4vw
-                transition: fill 0.3s ease 0s
-            &:hover
-                >svg
-                    fill: $pallete-navigation-red
-            &:active
-                >svg
-                    transition: fill 0.1s ease 0s
-                    fill: #670101
-
-        .card-count
+        border: 0
+        background: transparent
+        text-decoration: none
+        >svg
+            width: 3vw
+            height: 3vw
+            transition: fill 0.3s ease 0s
+        >span
             font-size: 2.5vw
             margin-left: 0.7vw
             margin-right: 0.7vw
+            color: black
+            transition: color 0.3s ease 0s
+        &:hover
+            .card-bt-plus
+                fill: $pallete-navigation-green
+            .card-bt-minus
+                fill: $pallete-navigation-red
+            .card-bt-plus-text
+                color: $pallete-navigation-green
+            .card-bt-minus-text
+                color: $pallete-navigation-red
+        &:active
+            .card-bt-plus
+                transition: fill 0.1s ease 0s
+                fill: #0a6701
+            .card-bt-minus
+                transition: fill 0.1s ease 0s
+                fill: #670101
+            .card-bt-plus-text
+                transition: color 0.1s ease 0s
+                color: #0a6701
+            .card-bt-minus-text
+                transition: color 0.1s ease 0s
+                color: #670101
+    .card-shCarts
+        align-self: center
+        margin-left: 10.5vw
+        width: 13vw
+        height: 4vw
+        font-size: 1.2vw
+
+    .card-count
+        font-size: 2.5vw
+        margin-left: 0.7vw
+        margin-right: 0.7vw
         
         
 

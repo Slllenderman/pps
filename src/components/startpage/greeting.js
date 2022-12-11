@@ -1,4 +1,6 @@
+import { useContext, useEffect } from 'react'
 import {Link} from 'react-router-dom'
+import { fastProviderRegContext } from '../../app'
 
 function Greeting(){
     return (

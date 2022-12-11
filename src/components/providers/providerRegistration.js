@@ -1,8 +1,6 @@
 import { useState } from "react"
 
-function ProviderRegistration(){
-    const [err, setErr] = useState(false)
-
+export function ProviderRegistration(){
     return(
         <div className="registration-provider-container">
             <div className="registration-title">Регистрация поставщика</div>
@@ -18,4 +16,18 @@ function ProviderRegistration(){
         </div>
 )}
 
-export default ProviderRegistration
+export function ProductRegistration(){
+    return(
+        <div className="registration-provider-container">
+            <div className="registration-title">Регистрация товара</div>
+            <div className="registration-label">Введите название</div>
+            <input className="registration-textBlock" type="text"/>
+            <div className="registration-label">Введите стоимость</div>
+            <input className="registration-textBlock" type="text"/>
+            <div className="registration-label">Введите категорию товара</div>
+            <input className="registration-textBlock" type="text"/>
+            <div className="registration-label">Добавьте фотографию</div>
+            <input type="file" className="registration-logo-add"/>
+            <button className="registration-confirm">Подтвердить</button>
+        </div>
+)}

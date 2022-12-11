@@ -1,4 +1,4 @@
-import { ProductsCardsList } from '../components/List/ListBlocks'
+import { ProductsCardsList } from '../cardlists/ListBlocks'
 
 function ShoppingCart(){
     return(

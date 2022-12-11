@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import { ShCardsList} from "./List/ListBlocks"
+import { ShCardsList } from "../cardlists/ListBlocks"
 import { useNavigate } from 'react-router-dom'
 
 function Profile(){
-    const [isProvider, setIs] = useState(false)
+    const [isProvider, setIs] = useState(true)
     const navigate = useNavigate()
 
     return(

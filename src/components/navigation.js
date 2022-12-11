@@ -1,9 +1,9 @@
-import box from '../imgs/box.svg'
+import box from '../static/box.svg'
 import { Link } from 'react-router-dom'
 import React from 'react'
 
 function Navigation(){
-    const [registrated, set] = React.useState(false)
+    const [registrated, set] = React.useState(true)
 
     return (
     <div className="header-navigation-container">

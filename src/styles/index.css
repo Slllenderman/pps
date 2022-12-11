@@ -85,6 +85,9 @@
   .categories-item:hover > svg {
     fill: #DE0000; }
 
+.card-provider {
+  margin-left: 5vw; }
+
 .card-userlink {
   text-decoration: none; }
   .card-userlink:hover > div {
@@ -110,7 +113,7 @@
   transition: background-color 0.3s ease 0s; }
   .card-container > img {
     width: 13vw;
-    height: auto;
+    height: 13vw;
     border-radius: 0.5vw; }
   .card-container .card-company {
     display: flex;
@@ -125,7 +128,8 @@
     .card-container .card-company > img {
       width: 3vw;
       height: 3vw;
-      border-radius: 0.5vw; }
+      border-radius: 0.5vw;
+      margin-right: 0.5vw; }
   .card-container .card-content-container {
     display: flex;
     flex-flow: column;
@@ -143,6 +147,20 @@
     font-weight: 400;
     color: #676767;
     transition: color 0.3s ease 0s; }
+  .card-container .card-processing {
+    margin-top: 0.1vw;
+    margin-bottom: 1vw;
+    font-size: 1.5vw;
+    font-weight: 400;
+    color: #ff9500;
+    transition: color 0.3s ease 0s; }
+  .card-container .card-confirmed {
+    margin-top: 0.1vw;
+    margin-bottom: 1vw;
+    font-size: 1.5vw;
+    font-weight: 400;
+    color: #00990A;
+    transition: color 0.3s ease 0s; }
   .card-container .card-description {
     font-size: 2vw;
     font-weight: 400; }
@@ -154,43 +172,79 @@
       color: #4c4c4c; }
     .card-container .user:hover .card-title {
       color: #004c82; }
-  .card-container .card-countProd {
-    margin-top: 2vw;
+
+.card-countProd {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-flow: row;
+  width: 49vw; }
+  .card-countProd .card-countButton {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    flex-flow: row; }
-    .card-container .card-countProd .card-countButton {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 0;
-      background: transparent;
-      width: 4vw;
-      height: 4vw; }
-      .card-container .card-countProd .card-countButton > svg {
-        width: 4vw;
-        height: 4vw;
-        transition: fill 0.3s ease 0s; }
-      .card-container .card-countProd .card-countButton:hover > svg {
-        fill: #DE0000; }
-      .card-container .card-countProd .card-countButton:active > svg {
-        transition: fill 0.1s ease 0s;
-        fill: #670101; }
-    .card-container .card-countProd .card-count {
+    border: 0;
+    background: transparent;
+    text-decoration: none; }
+    .card-countProd .card-countButton > svg {
+      width: 3vw;
+      height: 3vw;
+      transition: fill 0.3s ease 0s; }
+    .card-countProd .card-countButton > span {
       font-size: 2.5vw;
       margin-left: 0.7vw;
-      margin-right: 0.7vw; }
+      margin-right: 0.7vw;
+      color: black;
+      transition: color 0.3s ease 0s; }
+    .card-countProd .card-countButton:hover .card-bt-plus {
+      fill: #00990A; }
+    .card-countProd .card-countButton:hover .card-bt-minus {
+      fill: #DE0000; }
+    .card-countProd .card-countButton:hover .card-bt-plus-text {
+      color: #00990A; }
+    .card-countProd .card-countButton:hover .card-bt-minus-text {
+      color: #DE0000; }
+    .card-countProd .card-countButton:active .card-bt-plus {
+      transition: fill 0.1s ease 0s;
+      fill: #0a6701; }
+    .card-countProd .card-countButton:active .card-bt-minus {
+      transition: fill 0.1s ease 0s;
+      fill: #670101; }
+    .card-countProd .card-countButton:active .card-bt-plus-text {
+      transition: color 0.1s ease 0s;
+      color: #0a6701; }
+    .card-countProd .card-countButton:active .card-bt-minus-text {
+      transition: color 0.1s ease 0s;
+      color: #670101; }
+  .card-countProd .card-shCarts {
+    align-self: center;
+    margin-left: 10.5vw;
+    width: 13vw;
+    height: 4vw;
+    font-size: 1.2vw; }
+  .card-countProd .card-count {
+    font-size: 2.5vw;
+    margin-left: 0.7vw;
+    margin-right: 0.7vw; }
 
 .list {
   margin-left: 5vw;
-  margin-top: 3vw; }
+  margin-top: 2vw;
+  margin-bottom: 2vw; }
+  .list .list-single-title {
+    margin-top: 5vw;
+    width: 47vw;
+    display: flex;
+    justify-content: center;
+    font-size: 2vw;
+    font-weight: 600; }
   .list .list-title {
     font-size: 2vw;
     font-weight: 600; }
   .list .list-filter {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1.2fr 1fr;
     grid-column-gap: 1vw;
     align-items: end;
     margin-top: 1vw;
@@ -277,12 +331,20 @@
   justify-content: flex-start; }
   .registration-provider-container .registration-title {
     margin-bottom: 0.5vw;
-    color: #fff;
+    color: #000;
     font-size: 2.3vw;
     font-weight: 600; }
   .registration-provider-container .registration-label {
     align-self: flex-start;
-    margin-top: 2vw; }
+    margin-top: 2vw;
+    color: #000; }
+  .registration-provider-container .registration-textBlock {
+    width: 25vw;
+    color: #000;
+    border-color: #000; }
+    .registration-provider-container .registration-textBlock:hover {
+      border-width: 2px;
+      border-color: #000; }
   .registration-provider-container .registration-confirm {
     align-self: flex-start; }
 
@@ -325,7 +387,7 @@
   border-width: 1px;
   transition: border-width 0.3s ease 0s; }
   .registration-textBlock:hover {
-    border-color: #DE0000;
+    border-color: #fff;
     border-width: 3px; }
 
 .registration-confirm {
@@ -391,6 +453,7 @@
 .profile-container {
   margin-left: 5vw;
   margin-top: 3vw;
+  margin-bottom: 2vw;
   display: flex;
   flex-flow: column;
   width: 49vw; }
@@ -468,7 +531,7 @@ body {
 .header-greeting {
   width: 100%;
   height: 30vw;
-  background-image: radial-gradient(#D9D9D900, #C6470040), url("../imgs/greetingbg.jpg");
+  background-image: radial-gradient(#D9D9D900, #C6470040), url("../static/greetingbg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

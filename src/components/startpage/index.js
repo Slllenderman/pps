@@ -2,7 +2,7 @@ import Categories from '../categories/categories'
 import Greeting from './greeting'
 import UXSteps from './steps'
 
-function startView(){
+function StartPage(){
     return(
         <div>
             <div className="header">
@@ -18,4 +18,4 @@ function startView(){
         </div>
 )}
 
-export default startView
+export default StartPage
