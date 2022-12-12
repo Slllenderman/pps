@@ -93,15 +93,34 @@ export function ProvidersList(){
     const [params, setParams] = useSearchParams()
     const title = TransformProdTitle(params.get("category"))
     let cityField, nameField
-    const [properties, setProperties] = useState({ category : params.get("category") })
 
-    const searchClick = () => {
-        setProperties({
+    let defaultParams
+    if(params.get("category") == null)
+        defaultParams = {
+            name : nameField,
+            city : cityField
+        }
+    else
+        defaultParams = {
             category : params.get("category"),
             name : nameField,
             city : cityField
-        })
-    }
+        }
+    const [properties, setProperties] = useState(defaultParams)
+
+    const searchClick = () => {
+        if(params.get("category") != null)
+            setProperties({
+                category : params.get("category"),
+                name : nameField,
+                city : cityField
+            })
+        else
+            setProperties({
+                name : nameField,
+                city : cityField
+            })
+    } 
     return (
         <div className="list">
             <div className="list-title">{"Список товаров по категории: " + title}</div>

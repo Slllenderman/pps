@@ -10,9 +10,9 @@ const initialState = {
     actualShCart : -1
 }
 
-const storeSlice = createSlice({
+const slice = createSlice({
     name: 'store',
-    initialState: initialState,
+    initialState,
     reducers: {
         setFastProviderRegistration(state){
             state.fastProviderRegistration = true
@@ -29,15 +29,31 @@ const storeSlice = createSlice({
 
         setProvider(state){
             state.isProvider = true
+        },
+
+        setShCartDate(state, action){
+            state.shCartDate = action.payload
+        },
+
+        setShCartLocation(state, action){
+            state.shCartLocation = action.payload
         }
-        
     }
 })
+
+export const {
+            setFastProviderRegistration, 
+            resetFastProviderRegistration,
+            authorize,
+            setProvider,
+            setShCartDate,
+            setShCartLocation
+} = slice.actions
 
 const store = configureStore({
     reducer: {  
-        storeSlice
+        root: slice.reducer
     }
 })
 
-export default configureStore
+export default store

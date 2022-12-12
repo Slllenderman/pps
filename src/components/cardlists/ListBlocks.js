@@ -6,7 +6,7 @@ export function ProductsCardsList({ filterProperties, providerView }){
     if(filterProperties == undefined)
         filterProperties = ""
     const [list, setList] = useState()
-    const getProductsApi = "http://127.0.0.1:8000/getProducts/?" + filterProperties
+    const getProductsApi = "http://127.0.0.1:8000/products/?" + filterProperties
     useEffect(() => {
         axios.get(getProductsApi)
         .then(response => setList( response.data ) )
@@ -28,7 +28,7 @@ export function UsersCardsList({filterProperties}){
     if(filterProperties == undefined)
         filterProperties = ""
     const [list, setList] = useState()
-    const getProductsApi = "http://127.0.0.1:8000/getProviders/?" + filterProperties
+    const getProductsApi = "http://127.0.0.1:8000/providers/?" + filterProperties
     useEffect(() => {
         axios.get(getProductsApi)
         .then(response => setList( response.data ) )

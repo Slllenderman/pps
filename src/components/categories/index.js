@@ -1,13 +1,10 @@
 import Categories from './categories'
-
-export function CustomersCategories(){
-    return(
-        <div className="categories-selectView">
-            <Categories basepath="/customers"/>
-        </div> 
-)}
+import { useDispatch } from 'react-redux'
+import { resetFastProviderRegistration } from '../../redux'
 
 export function ProvidersCategories(){
+    const dispatch = useDispatch()
+    dispatch( resetFastProviderRegistration() )
     return(
         <div className="categories-selectView">
             <Categories basepath="/providers"/>
@@ -15,6 +12,8 @@ export function ProvidersCategories(){
 )}
 
 export function ProductsCategories(){
+    const dispatch = useDispatch()
+    dispatch( resetFastProviderRegistration() )
     return(
         <div className="categories-selectView">
             <Categories basepath="/products"/>

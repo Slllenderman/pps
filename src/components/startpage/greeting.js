@@ -1,8 +1,14 @@
-import { useContext, useEffect } from 'react'
-import {Link} from 'react-router-dom'
-import { fastProviderRegContext } from '../../app'
+import { setFastProviderRegistration, resetFastProviderRegistration } from "../../redux"
+import { Link } from 'react-router-dom'
+import { useDispatch } from "react-redux"
 
 function Greeting(){
+    const dispatch = useDispatch()
+    dispatch( resetFastProviderRegistration() )
+    const fastProviderClick = () => {
+        dispatch( setFastProviderRegistration() )
+    }
+
     return (
         <div className="header-greeting">
             <div className="header-greeting-container">
@@ -12,7 +18,7 @@ function Greeting(){
                     <p>для вашего бизнеса</p>
                 </div>
                 <Link className="header-greeting-button" to="/registration">Я заказчик</Link>
-                <Link className="header-greeting-button" to="/registration">Я поставщик</Link>
+                <Link className="header-greeting-button" onClick={ () => fastProviderClick() } to="/registration">Я поставщик</Link>
             </div>
         </div>
 )}

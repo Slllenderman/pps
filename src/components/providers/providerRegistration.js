@@ -1,6 +1,12 @@
 import { useState } from "react"
+import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from "react"
 
 export function ProviderRegistration(){
+    const auth = useSelector((state) => state.root.isAuthorized)
+    const navigate = useNavigate()
+    useEffect(() => {if(!auth) navigate("/") }, [])
     return(
         <div className="registration-provider-container">
             <div className="registration-title">Регистрация поставщика</div>
@@ -17,6 +23,9 @@ export function ProviderRegistration(){
 )}
 
 export function ProductRegistration(){
+    const auth = useSelector((state) => state.root.isAuthorized)
+    const navigate = useNavigate()
+    useEffect(() => {if(!auth) navigate("/") }, [])
     return(
         <div className="registration-provider-container">
             <div className="registration-title">Регистрация товара</div>
