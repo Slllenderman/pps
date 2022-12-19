@@ -1,6 +1,6 @@
 import Categories from './categories'
 import { useDispatch } from 'react-redux'
-import { resetFastProviderRegistration } from '../../redux'
+import { resetFastProviderRegistration } from '../../redux/userSlice'
 
 export function ProvidersCategories(){
     const dispatch = useDispatch()

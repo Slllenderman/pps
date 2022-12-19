@@ -117,11 +117,13 @@
     border-radius: 0.5vw; }
   .card-container .card-company {
     display: flex;
+    margin-top: 0.5vw;
     text-decoration: none;
     align-items: center;
     justify-content: start;
     font-size: 1.8vw;
     font-weight: 400;
+    width: 30vw;
     transition: color 0.3s ease 0s; }
     .card-container .card-company:hover {
       color: #DE0000; }
@@ -136,7 +138,12 @@
     justify-content: start;
     align-content: start; }
   .card-container .card-title {
-    font-size: 2.6vw;
+    font-size: 2vw;
+    font-weight: 550;
+    color: #0066af;
+    transition: color 0.3s ease 0s; }
+  .card-container .card-uuid {
+    font-size: 1.4vw;
     font-weight: 550;
     color: #0066af;
     transition: color 0.3s ease 0s; }
@@ -161,6 +168,13 @@
     font-weight: 400;
     color: #00990A;
     transition: color 0.3s ease 0s; }
+  .card-container .card-rejected {
+    margin-top: 0.1vw;
+    margin-bottom: 1vw;
+    font-size: 1.5vw;
+    font-weight: 400;
+    color: #DE0000;
+    transition: color 0.3s ease 0s; }
   .card-container .card-description {
     font-size: 2vw;
     font-weight: 400; }
@@ -174,7 +188,7 @@
       color: #004c82; }
 
 .card-countProd {
-  margin-top: 2vw;
+  margin-top: 1.5vw;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -228,23 +242,23 @@
     margin-left: 0.7vw;
     margin-right: 0.7vw; }
 
+.card-title-order {
+  color: #000000;
+  font-size: 1.8vw; }
+
+.card-count-input {
+  font-size: 2.5vw; }
+
 .list {
   margin-left: 5vw;
   margin-top: 2vw;
   margin-bottom: 2vw; }
-  .list .list-single-title {
-    margin-top: 5vw;
-    width: 47vw;
-    display: flex;
-    justify-content: center;
-    font-size: 2vw;
-    font-weight: 600; }
   .list .list-title {
     font-size: 2vw;
     font-weight: 600; }
   .list .list-filter {
     display: grid;
-    grid-template-columns: 2fr 1.2fr 1fr;
+    grid-template-columns: 2fr auto 1fr;
     grid-column-gap: 1vw;
     align-items: end;
     margin-top: 1vw;
@@ -259,13 +273,14 @@
     border-radius: 0.3vw;
     border-color: #000;
     border-width: 1px;
-    width: 30vw;
+    width: 25vw;
     height: 1.5vw;
     font-size: 1.3vw;
     transition: border-width 0.3s ease 0s; }
     .list .list-filter-textblock-find:hover {
       border-width: 2px; }
   .list .list-filter-textblock-price {
+    justify-self: flex-end;
     border-radius: 0.3vw;
     border-color: #000;
     border-width: 1px;
@@ -274,8 +289,10 @@
     transition: border-width 0.3s ease 0s; }
     .list .list-filter-textblock-price:hover {
       border-width: 2px; }
+  .list .list-filter-search-container {
+    display: flex;
+    justify-content: flex-end; }
   .list .list-filter-search {
-    justify-self: flex-end;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -293,10 +310,31 @@
       transition: background-color 0.1s ease 0s;
       background-color: #bcbcbc; }
   .list .list-filter-price {
-    margin-top: 0.2vw; }
+    display: flex;
+    justify-items: flex-end;
+    justify-content: flex-end;
+    margin-top: 0.4vw; }
   .list .list-filter-price-title {
     margin-right: 0.3vw;
+    margin-left: 1vw;
     font-size: 1.2vw; }
+
+.list-single-title {
+  margin-top: 5vw;
+  width: 47vw;
+  display: flex;
+  justify-content: center;
+  font-size: 2vw;
+  font-weight: 600; }
+
+.list-single-err {
+  color: #DE0000;
+  margin-top: 5vw;
+  width: 47vw;
+  display: flex;
+  justify-content: center;
+  font-size: 2vw;
+  font-weight: 600; }
 
 .registration-back-container {
   width: 100%;
@@ -432,6 +470,10 @@
 .shCart-label {
   font-size: 1.4vw; }
 
+.shCart-view-label {
+  margin-top: 0.5vw;
+  font-size: 2vw; }
+
 .shCart-textBlock {
   margin-bottom: 1vw;
   height: 1.5vw;
@@ -441,14 +483,24 @@
 .shCart-grid {
   display: flex;
   justify-items: flex-start;
-  align-items: baseline;
+  align-content: flex-end;
   width: 49vw; }
 
 .shCart-confirm {
   margin-left: 11vw;
   font-size: 1vw;
   width: 7vw;
-  height: 2vw; }
+  height: 2.3vw; }
+
+.shCart-err {
+  margin-top: 0.3vw;
+  font-size: 1vw;
+  color: #DE0000; }
+
+.shCart-ordersErr {
+  margin-bottom: 1vw;
+  font-size: 2vw;
+  color: #DE0000; }
 
 .profile-container {
   margin-left: 5vw;
@@ -469,26 +521,15 @@
   font-weight: 600;
   font-size: 1vw; }
 
-.modal-container {
-  position: absolute;
-  top: 35vh;
-  left: 35vw;
-  width: 30vw;
-  height: 30vh;
-  background-color: #f5f5f5;
-  border-radius: 1vw;
-  border: 1px; }
-
-.modal-title {
-  position: relative;
-  top: 2vh;
-  left: 1vw;
+.profile-exitBt {
+  margin-left: 1vw;
+  height: 4vw;
+  width: 15vw;
+  font-weight: 600;
   font-size: 1.5vw; }
 
-.modal-text {
-  position: relative;
-  top: 9vh;
-  left: 2.2vw; }
+.profile-Btns {
+  display: flex; }
 
 body {
   margin: 0 auto;

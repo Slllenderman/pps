@@ -4,19 +4,12 @@
     margin-left: 5vw
     margin-top: 2vw
     margin-bottom: 2vw
-    .list-single-title
-        margin-top: 5vw
-        width: 47vw
-        display: flex
-        justify-content: center
-        font-size: 2vw
-        font-weight: 600
     .list-title
         font-size: 2vw
         font-weight: 600
     .list-filter
         display: grid
-        grid-template-columns: 2fr 1.2fr 1fr
+        grid-template-columns: 2fr auto 1fr
         grid-column-gap: 1vw
         align-items: end
         margin-top: 1vw
@@ -31,13 +24,14 @@
         border-radius: 0.3vw
         border-color: #000
         border-width: 1px
-        width: 30vw
+        width: 25vw
         height: 1.5vw
         font-size: 1.3vw
         transition: border-width 0.3s ease 0s
         &:hover
             border-width: 2px
     .list-filter-textblock-price
+        justify-self: flex-end  
         border-radius: 0.3vw
         border-color: #000
         border-width: 1px
@@ -47,8 +41,12 @@
         &:hover
             border-width: 2px
     
+
+    .list-filter-search-container
+        display: flex
+        justify-content: flex-end
+
     .list-filter-search
-        justify-self: flex-end
         display: flex
         justify-content: center
         align-items: center
@@ -67,8 +65,29 @@
             background-color: #bcbcbc
 
     .list-filter-price
-        margin-top: 0.2vw
+        display: flex
+        justify-items: flex-end
+        justify-content: flex-end
+        margin-top: 0.4vw
 
     .list-filter-price-title
         margin-right: 0.3vw
+        margin-left:  1vw
         font-size: 1.2vw
+
+.list-single-title
+        margin-top: 5vw
+        width: 47vw
+        display: flex
+        justify-content: center
+        font-size: 2vw
+        font-weight: 600
+
+.list-single-err
+        color: $pallete-navigation-red
+        margin-top: 5vw
+        width: 47vw
+        display: flex
+        justify-content: center
+        font-size: 2vw
+        font-weight: 600

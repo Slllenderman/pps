@@ -1,22 +1,44 @@
-import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { Link, useNavigate, useSearchParams } from "react-router-dom"
+import { useEffect, useState } from "react"
 import { ProductsList } from "../cardlists"
-import logo from '../../static/logo.jpg'
+import axios from "axios"
+import { useSelector } from "react-redux"
 
 function ProviderSite(){
-
-    const[isProviderView, setProviderView] = useState(true)
     const navigate = useNavigate()
+    const providerId = useSelector((state) => state.user.provider)
+    const[isProviderView, setProviderView] = useState(false)
+    const[params, setParams] = useSearchParams()
+    const[products, setProducts] = useState([])
+    const[provider, setProvider] = useState({
+        name : '',
+        address : '',
+        description : '',
+        photo : ''
+    })
+
+    useEffect(() => {
+        const provider = params.get('providerName')
+        setProviderView(providerId == params.get('provider'))
+        axios.get(`/providers?name=${provider}`).then(response => {
+            setProvider({
+                name : response.data[0].name,
+                address : response.data[0].address,
+                description : response.data[0].description,
+                photo : response.data[0].photo
+            })
+        })
+    }, [])
 
     return(
         <div>
             <div className="card-provider">
                 <div className='card-container'>
-                    <img src={logo}/>
+                    <img src={provider.photo}/>
                     <div className="card-content-container">
-                        <div className="card-title">"Пятёрочка"</div>
-                        <div className="card-location">Москва</div>
-                        <div className="card-description">Описание</div>
+                        <div className="card-title">{provider.name}</div>
+                        <div className="card-location">{provider.address}</div>
+                        <div className="card-description">{provider.description}</div>
                     </div>
                 </div>
                     { isProviderView ?
@@ -30,7 +52,7 @@ function ProviderSite(){
                     }
             </div>
             <div>
-                <ProductsList providerView={isProviderView}/>
+                <ProductsList providerView={isProviderView} products={products}/>
             </div>
         </div>
 )}

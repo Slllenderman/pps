@@ -1,10 +1,9 @@
-import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useEffect } from "react"
 
 export function ProviderRegistration(){
-    const auth = useSelector((state) => state.root.isAuthorized)
+    const auth = useSelector((state) => state.user.isAuthorized)
     const navigate = useNavigate()
     useEffect(() => {if(!auth) navigate("/") }, [])
     return(
@@ -15,7 +14,7 @@ export function ProviderRegistration(){
             <div className="registration-label">Введите расположение вашей компании</div>
             <input className="registration-textBlock" type="text"/>
             <div className="registration-label">Добавьте описание</div>
-            <input className="registration-provider-description" type="text"/>
+            <textarea className="registration-provider-description"/>
             <div className="registration-label">Добавьте логотип</div>
             <input type="file" className="registration-logo-add"/>
             <button className="registration-confirm">Подтвердить</button>

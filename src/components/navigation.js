@@ -1,20 +1,42 @@
 import box from '../static/box.svg'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
 import axios from 'axios'
+import { useCookies } from 'react-cookie'
+import { authorize, setProvider, setToken } from '../redux/userSlice'
+import { initOrders, setLocation, setDate } from '../redux/shCartSlice'
 
 function Navigation(){
-    const authorized = useSelector((state) => state.root.isAuthorized )
+    const authorized = useSelector((state) => state.user.isAuthorized )
+    const [cookie, setCookie, removeCookie] = useCookies(["auth", "orders"])
+    const dispatch = useDispatch()
 
     useEffect(()=> {
-        axios.get('auth/IsAuthenticated',{ headers : {
-            "Authorization" : "Token 71d49ee65f00989b031985180ec4053b15dd76ed" }}).then(
-            data => console.log(data)
-        )
-        .catch(
-            err => console.log(err)
-        )
+        if(cookie.auth)
+            axios.post('/auth/token/login/', {
+                username: cookie.auth.login,
+                password: cookie.auth.password
+            }).then(response =>{ 
+                dispatch( setToken(response.data.auth_token) )
+                dispatch( authorize() )
+                if(cookie.orders) dispatch( initOrders(cookie.orders) )
+                if(cookie.shCartDate) dispatch( setDate(cookie.shCartDate) )
+                if(cookie.shCartLocation) dispatch( setLocation(cookie.shCartLocation) )
+                axios.get(`/providers?username=${cookie.auth.login}`,{ 
+                    "headers" : { 
+                        "Authorization" : "token " + response.data.auth_token 
+                    }
+                }).then(response => {
+                    if(response.data.length != 0)
+                        dispatch(setProvider({
+                            pk : response.data[0].pk,
+                            name : response.data[0].name
+                        }
+                    ))
+                }).catch(err => console.log(err)) 
+            })
+            .catch(error => removeCookie("auth", {path:"/"}))
     },[])
 
     return (
