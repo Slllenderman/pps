@@ -6,12 +6,13 @@ import axios from 'axios'
 import { useCookies } from 'react-cookie'
 import { authorize, setProvider, setToken } from '../redux/userSlice'
 import { initOrders, setLocation, setDate } from '../redux/shCartSlice'
+import { Breadcrumbs } from 'react-breadcrumbs-dynamic'
 
 function Navigation(){
     const authorized = useSelector((state) => state.user.isAuthorized )
     const [cookie, setCookie, removeCookie] = useCookies(["auth", "orders"])
     const dispatch = useDispatch()
-
+    
     useEffect(()=> {
         if(cookie.auth)
             axios.post('/auth/token/login/', {
@@ -40,6 +41,7 @@ function Navigation(){
     },[])
 
     return (
+    <>
     <div className="header-navigation-container">
         <Link to="/">
             <img className="header-navigation-logo" src={box}/>
@@ -78,6 +80,8 @@ function Navigation(){
             </div>
         </div>
     </div>
+    <Breadcrumbs/>
+    </>
 )}
 
 

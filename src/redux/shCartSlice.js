@@ -5,7 +5,8 @@ const initialState = {
     date : "",
     location : "",
     orders : {},
-    sum : 0
+    sum : 0,
+    req : false
 }
 
 const shCartSlice = createSlice({
@@ -40,6 +41,10 @@ const shCartSlice = createSlice({
                 state.sum += value.quantity * value.product.price
         },
 
+        setReqReload(state, action){
+            state.req = action.payload
+        },
+
         logoutShCart(state){
             state.orders = {}
             state.location = ''
@@ -53,7 +58,8 @@ export const {
     setLocation,
     setOrder,
     initOrders,
-    logoutShCart
+    logoutShCart,
+    setReqReload
 } = shCartSlice.actions
 
 export default shCartSlice

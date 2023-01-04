@@ -5,7 +5,8 @@ const initialState = {
     isAuthorized : false,
     provider : -1,
     providerName : "",
-    token : ""
+    token : "",
+    product : undefined
 }
 
 const userSlice = createSlice({
@@ -38,6 +39,10 @@ const userSlice = createSlice({
         setProvider(state, action){
             state.provider = action.payload.pk
             state.providerName = action.payload.name
+        },
+
+        setProduct(state, action){
+            state.product = action.payload
         }
     }
 })
@@ -48,7 +53,8 @@ export const {
             authorize,
             setToken,
             logout,
-            setProvider
+            setProvider,
+            setProduct
 } = userSlice.actions
 
 export default userSlice

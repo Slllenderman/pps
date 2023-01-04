@@ -1,8 +1,10 @@
-import { ProductsCardsList, UsersCardsList, ShCartCardsList } from './ListBlocks'
+import { ProductsCardsList, UsersCardsList, ShCartCardsList, ProviderOrdersList } from './listblocks'
 import { useSearchParams } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import qs from 'qs'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 function TransformProdTitle(paramTitle){
     switch(paramTitle){
@@ -64,7 +66,7 @@ export function ProductsList({titleVisability, providerView}){
             name : nameField,
             price_min : minPriceField,
             price_max : maxPriceField,
-            provider :params.get("provider")
+            provider :params.get("provider"),
         })
     }
 
@@ -103,7 +105,6 @@ export function ProvidersList(){
     const title = TransformProdTitle(params.get("category"))
     const [locationField, setLocationField] = useState() 
     const [nameField, setNameField] = useState()
-
     let defaultParams
     if(params.get("category") == null)
         defaultParams = {
@@ -197,5 +198,72 @@ export function ShoppingCartsList({ titleVisability }){
                 </div>
             </div>
             <ShCartCardsList filterProperties={qs.stringify(properties)}/>
+        </div>
+)}
+
+export function ProviderOffersList(){
+    const auth = useSelector((state) => state.user.isAuthorized)
+    const navigate = useNavigate()
+    const [params, setParams] = useSearchParams()
+    useEffect(() => {if(!auth) navigate("/") }, [])
+
+    const [dateField, setDateField] = useState() 
+    const [locationField, setLocationField] = useState()
+    const [idField, setIdField] = useState()
+    const [status, setStatus] = useState()
+    const [properties, setProperties] = useState({ provider : params.get('provider')})
+
+    const searchClick = () => {
+            setProperties({
+                id : idField,
+                date : dateField,
+                location : locationField,
+                state : status,
+                provider : params.get('provider')
+            })
+    }
+
+    const TransformStatus = (value) => {
+        const status = value.toLowerCase()
+        if(status == '') return undefined
+        else if("обработка".startsWith(status)) return "P"
+        else if("принято".startsWith(status)) return "A"
+        else if("отклонено".startsWith(status)) return "R"
+        else return 'N'
+    }
+
+    return(
+        <div>
+            <div className="list">
+                <div className="list-title">Список заказов</div>
+                <div className="list-filter">
+                    <div>
+                        <div className="list-filter-title">Поиск по номеру</div>
+                        <input type="text" className="list-filter-textblock-find" 
+                        onChange={ (event) => setIdField(event.target.value) }/>
+                    </div>
+                    <div>
+                        <div className="list-filter-price">
+                            <span className="list-filter-price-title">Дата</span>
+                            <input type="text" className="list-filter-textblock-price"
+                            onChange={ (event) => setDateField(event.target.value) }/>
+                        </div>
+                        <div className="list-filter-price">
+                            <span className="list-filter-price-title">Место</span>
+                            <input type="text" className="list-filter-textblock-price"
+                            onChange={ (event) => setLocationField(event.target.value) }/>
+                        </div>
+                        <div className="list-filter-price">
+                            <span className="list-filter-price-title">Статус</span>
+                            <input type="text" className="list-filter-textblock-price"
+                            onChange={ (event) => setStatus( TransformStatus(event.target.value) ) }/>
+                        </div>
+                    </div>
+                    <div className="list-filter-search-container">
+                        <button className="list-filter-search" onClick={ () => searchClick() }>Поиск</button>
+                    </div>
+                </div>
+            </div>
+            <ProviderOrdersList filterProperties={qs.stringify(properties)}/> 
         </div>
 )}

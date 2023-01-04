@@ -1,13 +1,26 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "start_url": ".",
+  "name": "PPS",
+  "short_name": "PPS",
+  "start_url": "/",
   "display": "standalone",
-  "icons" : [
-    {
-      "src" : "favicon.ico",
-      "sizes" : "120x120 32x32 16x16",
-      "type" : "image/x-icon"
-    }
+  "background_color": "#fdfdfd",
+  "theme_color": "#db4938",
+  "orientation": "portrait-primary",
+  "icons": [
+      {
+        "src" : "box128.ico",
+        "sizes" : "128x128",
+        "type" : "image/x-icon"
+      },
+      {
+        "src" : "box32.ico",
+        "sizes" : "32x32",
+        "type" : "image/x-icon"
+      },
+      {
+        "src" : "box.png",
+        "sizes" : "144x144",
+        "type" : "image/png"
+      }
   ]
 }

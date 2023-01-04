@@ -1,9 +1,19 @@
 import { useEffect, useState } from 'react'
 import { OrderProductCard, UserCard, ShCartCard, ProductCard } from './cards'
 import axios from 'axios'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setReqReload } from '../../redux/shCartSlice'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 export function ProductsCardsList({ filterProperties, providerView }){
+
+    const dispatch = useDispatch()
+    const req = useSelector((state) => state.cart.req)
+    useEffect(() => {
+        if(req)
+            dispatch( setReqReload(false) )
+    }, [req])
+
     if(filterProperties == undefined)
         filterProperties = ""
     const [lastFilterproperties, setLast] = useState('')
@@ -12,10 +22,10 @@ export function ProductsCardsList({ filterProperties, providerView }){
         setLast(filterProperties)
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/products/?${filterProperties}`)
+        axios.get(`/products/?${filterProperties}`)
         .then(response => setList( response.data ) )
         .catch(error => setList( [] ))
-    }, [lastFilterproperties])
+    }, [lastFilterproperties, req])
 
     return (
         <div>
@@ -54,7 +64,7 @@ export function UsersCardsList({filterProperties}){
     if(lastFilterproperties != filterProperties)
         setLast(filterProperties)
     const [list, setList] = useState()
-    const getProvidersApi = "http://127.0.0.1:8000/providers/?" + filterProperties
+    const getProvidersApi = "/providers/?" + filterProperties
     useEffect(() => {
         axios.get(getProvidersApi)
         .then(response => setList( response.data ) )
@@ -92,7 +102,7 @@ export function ShCartCardsList({filterProperties}){
                 setList( [] )
             })
     }, [lastFilterproperties])
-
+ 
     return (
         <div>
             { 
@@ -105,13 +115,26 @@ export function ShCartCardsList({filterProperties}){
         </div>
 )}
 
-export function ShCartViewList({token, uuid}){
+export function ShCartViewList({token, uuid, cart}){
     const [orders, setOrders] = useState()
     const [sum, setSum] = useState(0)
+    const [params, setParams] = useSearchParams()
+    const provider = params.get('provider')
+    const dispatch = useDispatch()
+
     useEffect(() => {
-        if(token != '')
-            axios.get(`/orders?shCart=${uuid}`,
-            { "headers" : { "Authorization" : "token " + token }})
+        if(token != ''){
+            let url = ''
+            if(provider != 'undefined')
+            {
+                url = `/orders?shCart=${uuid}&provider=${provider}`
+            }
+            else
+            { 
+                url = `/orders?shCart=${uuid}`
+            }
+
+            axios.get(url, { "headers" : { "Authorization" : "token " + token }})
             .then((response) => {
                 let sum = 0
                 for(let i = 0; i < response.data.length; i++)
@@ -120,17 +143,56 @@ export function ShCartViewList({token, uuid}){
                 setOrders(response.data) 
             })
             .catch((err) => console.log(err))
+        }
     }, [])
+
+    const payClick = () => {
+        axios.put(`/shoppingcarts/?shCart=${uuid}`, {}, { "headers" : { "Authorization" : "token " + token }})
+        .then(res => dispatch(setReqReload(true)))
+        .catch(err => console.log(err))
+    }
 
     return(
         <div>
-            <div className='shCart-view-label'>{`Общая сумма заказа: ${sum} рублей`}</div>
+            <div className='shCart-grid'>
+                <div className='shCart-view-label'>{`Сумма заказа: ${sum} рублей`}</div>
+                { cart.state == 'B' ? <button className="shCart-pay" onClick={() => payClick()}><span>Оплатить</span></button> : null}
+            </div>
             { 
                 orders == undefined ?
                     <div className="list-single-title">Ошибка соединения с сервером</div> :
                 orders.length == 0 ?
                     <div className="list-single-title">Нет оптовых заказов по параметрам поиска</div> :
-                orders.map((item) => <ProductCard key={item.pk} order={item}/>)
+                orders.map((item) => <ProductCard key={item.pk} order={item} provider={provider}/>)
             }
+        </div>
+)}
+
+export function ProviderOrdersList({filterProperties}){
+    const [carts, setCarts] = useState([])
+    const token = useSelector((state) => state.user.token)
+    const auth = useSelector((state) => state.user.isAuthorized)
+    const [params, setParams] = useSearchParams()
+    const navigate = useNavigate()
+    
+    useEffect(() => {
+        if(!auth) navigate('/')
+        else{
+            axios.get(`/shoppingcarts/?${filterProperties}`, { "headers" : { "Authorization" : "token " + token }})
+            .then(res => setCarts(res.data))
+            .catch(err => setCarts([]))
+        }
+    }, [filterProperties])
+
+
+    return(
+        <div className='list'>
+            { 
+                carts == undefined ?
+                    <div className="list-single-title">Ошибка соединения с сервером</div> :
+                carts.length == 0 ?
+                    <div className="list-single-title">Нет оптовых заказов</div> :              
+                    carts.map((item) => <ShCartCard key={item.pk} cart={item} provider={params.get('provider')}/>)
+            }            
         </div>
 )}

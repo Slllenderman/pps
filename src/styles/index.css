@@ -231,23 +231,88 @@
     .card-countProd .card-countButton:active .card-bt-minus-text {
       transition: color 0.1s ease 0s;
       color: #670101; }
-  .card-countProd .card-shCarts {
-    align-self: center;
-    margin-left: 10.5vw;
-    width: 13vw;
-    height: 4vw;
-    font-size: 1.2vw; }
-  .card-countProd .card-count {
-    font-size: 2.5vw;
-    margin-left: 0.7vw;
-    margin-right: 0.7vw; }
+
+.card-orderProd {
+  margin-top: 1vw;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-flow: row;
+  width: 49vw; }
+
+.card-orderBt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  text-decoration: none; }
+  .card-orderBt > svg {
+    width: 2vw;
+    height: 2vw;
+    transition: fill 0.3s ease 0s; }
+  .card-orderBt > span {
+    font-size: 2vw;
+    margin-left: 0.2vw;
+    margin-right: 0.2vw;
+    color: black;
+    transition: color 0.3s ease 0s; }
+  .card-orderBt:hover .card-bt-plus {
+    fill: #00990A; }
+  .card-orderBt:hover .card-bt-minus {
+    fill: #DE0000; }
+  .card-orderBt:hover .card-bt-plus-text {
+    color: #00990A; }
+  .card-orderBt:hover .card-bt-minus-text {
+    color: #DE0000; }
+  .card-orderBt:active .card-bt-plus {
+    transition: fill 0.1s ease 0s;
+    fill: #0a6701; }
+  .card-orderBt:active .card-bt-minus {
+    transition: fill 0.1s ease 0s;
+    fill: #670101; }
+  .card-orderBt:active .card-bt-plus-text {
+    transition: color 0.1s ease 0s;
+    color: #0a6701; }
+  .card-orderBt:active .card-bt-minus-text {
+    transition: color 0.1s ease 0s;
+    color: #670101; }
+
+.card-shCarts {
+  align-self: center;
+  margin-left: 10.5vw;
+  width: 13vw;
+  height: 4vw;
+  font-size: 1.2vw; }
+
+.card-count {
+  font-size: 2.5vw;
+  margin-left: 0.7vw;
+  margin-right: 0.7vw; }
 
 .card-title-order {
-  color: #000000;
   font-size: 1.8vw; }
 
 .card-count-input {
   font-size: 2.5vw; }
+
+.card-product-description {
+  font-size: 2vw;
+  font-weight: 400;
+  margin-top: 2vw; }
+
+.card-productsite {
+  margin-left: 2vw;
+  width: 50vw;
+  word-wrap: break-word; }
+
+.card-order-rejected {
+  margin-top: 2vw;
+  color: #DE0000; }
+
+.card-order-confirmed {
+  margin-top: 2vw;
+  color: #00990A; }
 
 .list {
   margin-left: 5vw;
@@ -492,6 +557,12 @@
   width: 7vw;
   height: 2.3vw; }
 
+.shCart-pay {
+  margin-left: 17.5vw;
+  font-size: 1vw;
+  width: 7vw;
+  height: 2.3vw; }
+
 .shCart-err {
   margin-top: 0.3vw;
   font-size: 1vw;
@@ -661,5 +732,13 @@ body {
   background-color: #1F2B3C;
   height: 7vw;
   width: 100%; }
+
+.breadcrumbs-container {
+  display: flex;
+  color: black;
+  text-decoration: none; }
+
+.crumb + .crumb:before {
+  content: "/"; }
 
 /*# sourceMappingURL=index.css.map */
